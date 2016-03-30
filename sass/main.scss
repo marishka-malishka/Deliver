@@ -661,6 +661,16 @@ footer{
                         background: #ffffff;
                     }
                 }
+
+                @include small {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                @include middle {
+                    width: 50%;
+                    margin: 0;
+                }
             }
 
             &:nth-child(2){
@@ -669,6 +679,16 @@ footer{
 
                 a{
                     line-height: 1.45;
+                }
+
+                @include small {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                @include middle {
+                    width: 50%;
+                    margin: 0;
                 }
             }
 
@@ -681,6 +701,11 @@ footer{
                 }
 
                 @include small {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                @include middle {
                     width: 100%;
                     margin: 0;
                 }

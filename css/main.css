@@ -1083,6 +1083,7 @@ footer {
         margin-bottom: 5px;
         line-height: 1.5; }
       .footer-info .footer-contact .column-3:first-child .email {
+        display: block;
         line-height: 1.5; }
       .footer-info .footer-contact .column-3:first-child .phone {
         display: inline-block;
@@ -1105,6 +1106,10 @@ footer {
       width: 23.333333%; }
       .footer-info .footer-contact .column-3:nth-child(2) a {
         line-height: 1.45; }
+      @media (max-width: 676px) {
+        .footer-info .footer-contact .column-3:nth-child(2) {
+          width: 100%;
+          margin: 0; } }
       @media (max-width: 991px) {
         .footer-info .footer-contact .column-3:nth-child(2) {
           width: 50%;

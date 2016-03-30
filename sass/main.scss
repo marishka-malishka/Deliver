@@ -318,6 +318,7 @@ nav.top-menu {
 
     .flex-control-nav {
         top: auto;
+        z-index: 2;
         bottom: 30px;
         text-align: center;
 
@@ -443,6 +444,10 @@ nav.top-menu {
 /** Exampls of work **/
 .examples-of-work{
     @include gradient-vertical(#efefef, #fefefe, 75%, 25%);
+
+    @include middle {
+        background: #efefef;
+    }
 }
 
 .examples-work-text {
@@ -572,6 +577,10 @@ footer{
 
         .column-2 {
             padding: 0 30px 20px 0;
+
+            @include small {
+                padding: 0 0 20px 0;
+            }
         }
 
         p {
@@ -627,10 +636,11 @@ footer{
         }
 
         .column-3 {
-            margin-left: 7%;
-            width: 26.333333%;
 
             &:first-child {
+                margin-left: 6%;
+                width: 27.333333%;
+
                 p {
                     margin-bottom: 5px;
                     line-height: 1.5;
@@ -641,7 +651,10 @@ footer{
                 }
 
                 .phone {
+                    display: inline-block;
+                    margin-top: 15px;
                     color: #ffffff;
+                    font-weight: bold;
                     line-height: 1.5;
 
                     &:after {
@@ -650,9 +663,22 @@ footer{
                 }
             }
 
+            &:nth-child(2){
+                margin-left: 7%;
+                width: 23.333333%;
+
+                a{
+                    line-height: 1.45;
+                }
+            }
+
             &:last-child {
                 margin-left: 5%;
-                width: 28.333333%;
+                width: 31.333333%;
+
+                p {
+                    line-height: 1.5;
+                }
 
                 @include small {
                     width: 100%;
@@ -664,7 +690,7 @@ footer{
             input {
                 float: left;
                 padding: 12px;
-                width: 65%;
+                width: 73%;
                 background: #4e4c4c;
                 border: none;
                 color: #ffffff;
@@ -674,7 +700,7 @@ footer{
             button {
                 float: right;
                 padding: 11px;
-                width: 33%;
+                width: 25%;
                 background: #828282;
                 border: 0;
                 color: #ffffff;
@@ -704,7 +730,7 @@ footer{
 }
 
 .social-icon.footer-icon a div.one-social {
-    margin: 7px 0 5px 5px
+    margin: 7px 0 5px 5px;
 }
 
 .copyright {

@@ -22,7 +22,7 @@ $('.menu-toggle').click(function(){
 
 
 $(window).resize(function(){
-    if($(window).width() >= 991){
+    if($(window).width() >= 850){
         $('.header-bottom .top-menu').css('display', 'block');
     }
     else{

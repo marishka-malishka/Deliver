@@ -13,14 +13,6 @@
     transition: $args;
 }
 
-@mixin gradient-vertical($start-color, $end-color, $start-percent, $end-percent) {
-    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
-    background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
-    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0);
-}
-
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
     @if $inset {
         -webkit-box-shadow:inset $top $left $blur $spread $color;
@@ -33,7 +25,17 @@
     }
 }
 
-@mixin a($color: $hover_color) {
+/** Vertical gradiend like line **/
+@mixin gradient-vertical($start-color, $end-color, $start-percent, $end-percent) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0);
+}
+
+/** Add underline to hover effect **/
+@mixin link-hover-effect($color: $hover_color) {
     position: relative;
     color: $color;
     text-decoration: none;
@@ -55,6 +57,14 @@
     }
 }
 
+
+/** Media elements **/
+@mixin extra-small {
+    @media (max-width: 400px) {
+        @content;
+    }
+}
+
 @mixin small {
     @media (max-width: 676px) {
         @content;
@@ -69,6 +79,19 @@
 
 @mixin large {
     @media (max-width: 1200px ) {
+        @content;
+    }
+}
+
+/** Madia for top menu **/
+@mixin middle_for_menu {
+    @media all and (min-width: 850px) and (max-width: 990px) {
+        @content;
+    }
+}
+
+@mixin small_for_menu {
+    @media all and (max-width: 849px) {
         @content;
     }
 }

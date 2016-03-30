@@ -29,8 +29,10 @@ img {
 }
 
 h3 {
+    margin: 0;
     color: $headers_color;
     font-family: $headers_font;
+    font-size: 22px;
     text-transform: uppercase;
 }
 
@@ -64,7 +66,7 @@ button {
 .visible-desctop{
     display: block;
 
-    @include middle {
+    @include small {
         display: none;
     }
 }
@@ -72,7 +74,7 @@ button {
 .visible-mobile {
     display: none;
 
-    @include middle {
+    @include small {
         display: inline-block;
     }
 }
@@ -102,7 +104,7 @@ header {
     border-bottom: 1px solid #ffffff;
 }
 
-.header-social-icon {
+.social-icon {
     a {
         display: inline-block;
 
@@ -142,7 +144,7 @@ header {
     margin-left: 10px;
     background: none;
     border: none;
-    @extend .visible-mobile;
+    display: none;
 
     &:before {
         padding: 0 5px;
@@ -155,11 +157,26 @@ header {
         background: none;
         outline: none;
     }
+
+    @include small_for_menu {
+        display: block;
+    }
 }
 
 nav.top-menu {
     float: left;
-    @extend .visible-desctop;
+    display: block;
+
+    @include small_for_menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 100;
+        padding: 5px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+    }
 
     a {
         display: inline-block;
@@ -178,30 +195,30 @@ nav.top-menu {
         &:first-child {
             padding-left: 0;
 
-            @include middle {
+            @include small_for_menu {
                 padding-left: 9px;
             }
         }
 
-        @include middle {
-            display: block;
-            padding: 9px;
+        &:last-child {
+            padding-right: 0;
         }
 
         @include large {
-            padding-left: 9px;
-            padding-right: 9px;
-            font-size: 16px;
+           padding: 25px 9px;
+           font-size: 16px;
         }
-    }
 
-    @include middle {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 100;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        @include small_for_menu {
+            display: block;
+            padding: 9px;
+            font-size: 14px;
+        }
+
+        @include middle_for_menu {
+            padding: 25px 9px;
+            font-size: 12px;
+        }
     }
 }
 
@@ -211,7 +228,7 @@ nav.top-menu {
     float: right;
 
     input{
-        padding: 5px 25px 5px 5px;
+        padding: 5px 25px 5px 0;
         background: none;
         border: none;
     }
@@ -239,14 +256,23 @@ nav.top-menu {
     ul.slides {
         li {
             margin: 0;
-            padding: 145px 0;
+            padding: 105px 0 145px 0;
             color: #ffffff;
             text-align: center;
 
+            @include middle {
+                padding: 5px 0 65px 0;
+            }
+
             h3 {
-                margin: 0 0 30px 0;
+                margin: 0 0 23px 0;
                 color: #ffffff;
-                font-size: 36px;
+                font-size: 34px;
+                line-height: 1;
+
+                @include small {
+                    font-size: 30px;
+                }
 
                 span {
                     color: $hover_color;
@@ -260,10 +286,11 @@ nav.top-menu {
             a {
                 display: inline-block;
                 margin: auto;
-                padding: 14px 19px;
+                padding: 12px 22px;
                 border: 2px solid #ffffff;
                 color: #ffffff;
                 font-family: $headers_font;
+                font-size: 12px;
                 text-transform: uppercase;
                 text-decoration: none;
                 @include transition(all 1s ease-out);
@@ -273,8 +300,20 @@ nav.top-menu {
                     border-color: $hover_color;
                     color: $hover_color;
                 }
+
+                @include extra-small {
+                    display: block;
+                }
             }
         }
+    }
+
+    @include middle {
+        padding: 0 70px;
+    }
+
+    @include extra-small {
+        padding: 0 10px;
     }
 
     .flex-control-nav {
@@ -307,11 +346,42 @@ nav.top-menu {
             }
         }
     }
+
+    .flex-direction-nav {
+        a {
+            position: absolute;
+            display: block;
+            top: 50%;
+            margin-top: -32px;
+            width: 64px;
+            height: 64px;
+            background: url("../images/arrow.png");
+            opacity: 0.4;
+            @include border-radius(50%);
+
+            &.flex-prev {
+                left: 0;
+                transform: rotate(180deg);
+            }
+
+            &.flex-next {
+                right: 0;
+            }
+
+            &:hover, &:focus, &:active {
+                opacity: 1;
+            }
+        }
+
+        @include extra-small {
+            display: none;
+        }
+    }
 }
 
 /** Services block **/
 .serviced-text {
-    padding: 60px 0;
+    padding: 60px 15% 35px 15%;
     border-bottom: 1px solid #cccccc;
     text-align: center;
 
@@ -321,6 +391,10 @@ nav.top-menu {
 
     h2 {
         font-size: 22px;
+    }
+
+    p {
+        line-height: 1.5;
     }
 }
 
@@ -336,17 +410,19 @@ nav.top-menu {
         }
 
         h3 {
+            margin: 22px 0;
             font-size: 18px;
             text-align: center;
         }
 
         p {
-            max-height: 60px;
+            max-height: 72px;
             overflow: hidden;
+            line-height: 1.5;
         }
 
         a {
-            @include a();
+            @include link-hover-effect();
         }
         &.column-3 {
             width: 30%;
@@ -370,8 +446,12 @@ nav.top-menu {
 }
 
 .examples-work-text {
-    padding: 60px 0 30px 0;
+    padding: 58px 0 10px 0;
     text-align: center;
+
+    p {
+        line-height: 1.5;
+    }
 
     @include middle {
         padding-top: 30px;
@@ -407,7 +487,8 @@ nav.top-menu {
         }
 
         h3 {
-            font-size: 16px;
+            margin-top: 15px;
+            font-size: 18px;
         }
 
         &.column-3 {
@@ -441,14 +522,18 @@ nav.top-menu {
     .text-block{
         padding: 60px 15%;
 
+        p {
+            line-height: 1.5;
+        }
+
         @include middle {
             padding: 30px 5%;
         }
     }
 
     button {
-        margin-top: 15px;
-        padding: 15px 19px;
+        margin-top: 8px;
+        padding: 10px 17px;
         background: $hover_color;
         border: none;
         @include box-shadow(0, 0, 1px, 0, rgba(0, 0, 0, 0));
@@ -476,16 +561,21 @@ footer{
 
 .footer-info {
     overflow: hidden;
-    padding: 55px 0;
+    padding: 55px 0 35px 0;
     border-bottom: 1px solid #cccccc;
 
     .footer-text{
+        margin-top: 20px;
         float: left;
         width: 40%;
         box-sizing: border-box;
 
         .column-2 {
-            padding-bottom: 20px;
+            padding: 0 30px 20px 0;
+        }
+
+        p {
+            line-height: 1.5;
         }
 
         @include middle {
@@ -505,6 +595,7 @@ footer{
 
         h3 {
             margin-top: 0;
+            font-size: 18px;
             color: #ffffff;
 
             @include small {
@@ -514,7 +605,7 @@ footer{
         }
 
         a {
-           @include a($primary_color);
+           @include link-hover-effect($primary_color);
         }
 
         ul {
@@ -536,12 +627,13 @@ footer{
         }
 
         .column-3 {
-            margin-left: 10%;
-            width: 23.333333%;
+            margin-left: 7%;
+            width: 26.333333%;
 
             &:first-child {
                 p {
                     margin-bottom: 5px;
+                    line-height: 1.5;
                 }
 
                 .email{
@@ -611,8 +703,13 @@ footer{
     }
 }
 
+.social-icon.footer-icon a div.one-social {
+    margin: 7px 0 5px 5px
+}
+
 .copyright {
-    padding: 30px 0;
+    overflow: hidden;
+    padding: 18px 0;
     color: #808080;
     font-family: $headers_font;
     font-size: 12px;
@@ -631,7 +728,7 @@ footer{
 
 .bottom-nav {
     display: inline-block;
-    padding: 12px 40px 12px 0;
+    padding: 12px 0;
     text-align: right;
 
     a {

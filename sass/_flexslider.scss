@@ -50,16 +50,13 @@ html[xmlns] .slides {display: block;}
 
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
-.flex-direction-nav a {width: 55px; height: 340px; margin: 0; display: block; background: url(/assets/images/layout/flexslider-right-nav.png) no-repeat left 0; position: absolute; top: -12px; z-index: 10; cursor: pointer; text-indent: -9999px;}
-.flex-direction-nav .flex-next {right: 0px;
+.flex-direction-nav a {width: 55px; height: 340px; margin: 0; display: block; /*background: url(/assets/images/layout/flexslider-right-nav.png) no-repeat left 0*/; position: absolute; top: -12px; z-index: 10; cursor: pointer; text-indent: -9999px;}
+.flex-direction-nav .flex-next {right: 0px;}
 
-
-}
-
-.flex-direction-nav .flex-prev {left: -36px; display: none!important}
+.flex-direction-nav .flex-prev {left: -36px;}
 .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
 //.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
-.flex-direction-nav .flex-next.flex-disabled {background: url(/assets/images/layout/flexslider-right-nav.png) no-repeat right 0; cursor: default; right: -40px;}
+.flex-direction-nav .flex-next.flex-disabled {/*background: url(/assets/images/layout/flexslider-right-nav.png) no-repeat right 0*/; cursor: default; right: -40px;}
 
 /* Control Nav */
 .flex-control-nav {width: 100%; position: absolute; top: -40px; text-align: right; color: transparent; z-index: 20}
